@@ -11,8 +11,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const routes: Route[]=[
   {path:'', component: LoginComponent},
   {path:'home', component: HomeComponent}
-
-
 ]
 
 @NgModule({

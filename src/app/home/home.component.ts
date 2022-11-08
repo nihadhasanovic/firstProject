@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CarService, CarDetails} from "../car.service";
+import {CarService, CarDetails, Headers} from "../car.service";
 
 
 @Component({
@@ -13,20 +13,54 @@ import {CarService, CarDetails} from "../car.service";
 export class HomeComponent implements OnInit {
 
   carNew!: CarDetails[]
-  headers = ['Naziv vozila', 'Registracija', 'Tip vozila', 'Registriran do', 'Naredni servis', 'Ukupni trošak'];
+  headers!: Headers[]
+  rws: any
+  obj:any
+
+  isClicked:boolean=true;
 
 
   constructor(public car: CarService) { }
 
   ngOnInit(): void {
     this.carNew=this.car.CarDetails;
+    this.headers=this.car.headers;
   }
 
   addVehicle(){
 
   }
 
-  dodatniFilteri(){
+
+  editRow(){
+
+  }
+
+  deleteRow(){
+
+  }
+
+  dodatniFilteri() {
+    this.obj = document.getElementById('body');
+    this.rws = this.obj.getElementsByTagName('TR');
+
+    if(this.isClicked){
+      this.rws[5].style.display = "none";
+      this.rws[6].style.display = "none";
+      this.isClicked=false;
+    }
+    else{
+      this.rws[5].style.display = "";
+      this.rws[6].style.display = "";
+      this.isClicked=true;
+    }
+  }
+
+  licitacija(){
+
+  }
+
+  vozila(){
 
   }
 }

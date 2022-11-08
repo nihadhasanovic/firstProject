@@ -9,12 +9,31 @@ export interface CarDetails {
   cost: string
 }
 
+export interface Headers{
+  id:string;
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
 
+
+
+  get headers(): Headers[] {
+    return this._headers;
+  }
+
+  set headers(value: Headers[]) {
+    this._headers = value;
+  }
+
   constructor() { }
+
+  private _headers:Headers[] = [{id:"Naziv"}, {id:"Registracija"}, {id:"Tip vozila"}, {id:"Registriran do"},
+    {id:"Naredni servis"}, {id:"Ukupan trošak"}]
+
 
   private _carDetails: CarDetails [] =[
     {
@@ -74,8 +93,6 @@ export class CarService {
       cost:'25,000.00'
     }
   ]
-
-
 
   get CarDetails(): CarDetails[] {
     return this._carDetails;

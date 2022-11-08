@@ -1,116 +1,157 @@
-<!-- opala -->
-
 <header class="header-right"></header>
-<header class="header-left"></header>
-<aside class="sidebar"></aside>
-<div class="inputField">
-  <input type="text" class="input" placeholder="Unesite vozilo, registracijsku oznaku, kod">
-  <div class="search-icon-div">
-    <img src="../../assets/img/search.svg" class="search-icon">
+<header class="navbar">
+  <ul>
+    <li class="vozila" (click)="vozila()">
+      <b class="vozila-right-curve"></b>
+      <a>
+        Vozila
+      </a>
+    </li>
+    <li class="licitacija" (click)="licitacija()">
+      <b class="licitacija-right-curve"></b>
+      <a>
+        Licitacija
+      </a>
+    </li>
+  </ul>
+</header>
+<aside class="sidebar">
+  <div class="car">
+    <img src="../../assets/img/car.svg" class="car-icon">
   </div>
+  <div class="line"></div>
+  <div class="pie-chart">
+    <img src="../../assets/img/piechart.svg" class="pie-chart-icon">
+  </div>
+</aside>
+
+<div class="notif-rectangle">
+  <img src="../../assets/img/notifications.svg" class="notif">
 </div>
-<div class="modelMenu">
-  <div class="modelMenu-field">
-    <div class="modelMenu-text">Tip vozila</div>
-    <div class="modelMenu-dropdownField">
-      <img src="../../assets/img/dropdown.svg" class="modelMenu-dropdownIcon">
-    </div>
-  </div>
+<div class="htune-rectangle">
+  <img src="../../assets/img/horizontal-tune.svg" class="htune">
 </div>
-<button (click)="dodatniFilteri()" class="dodatniFilteri">
-  <div class="dodatniFilteri-text">Dodatni filteri</div>
-  <div class="downArrow">
-    <img src="../../assets/img/downArrow.svg" class="downArrow-icon">
-  </div>
-</button>
-<table class="table">
-  <thead>
-  <tr>
-    <th class="header1"></th>
-    <th class="headers-in-row" *ngFor="let h of headers">
-      <div class="header-title">{{h}}</div>
-    </th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let c of carNew" class="data-row">
-    <td class="check-td">
-      <div class="check-td-div">
-        <input type="checkbox" class="checkbox-body">
-      </div>
-    </td>
-    <td class="name">
-      <div class="text-field">{{c.name}}</div>
-    </td>
-    <td class="id">
-      <div class="text-field">{{c.id}}</div>
-    </td>
-    <td class="model">
-      <div class="text-field">{{c.model}}</div>
-    </td>
-    <td class="regDate">
-      <div class="text-field">{{c.regDate}}</div>
-    </td>
-    <td class="servDate">
-      <div class="text-field">{{c.servDate}}</div>
-    </td>
-    <td class="cost">
-      <div class="text-field">{{c.cost}}</div>
-    </td>
-  </tr>
-  </tbody>
-  <tfoot>
-  <tr class="foot-row">
-    <div class="action">
-      <div class="action-check">
-        <div class="action-check-field">
-          <input type="checkbox" class="action-checkbox">
+<div class="acc-rectangle">
+  <img src="../../assets/img/account.svg" class="acc">
+</div>
+
+<main class="main-content" id="mainContent">
+  <div class="box-wrapper" style="width:auto; height:580px; position:relative;">
+    <div class="box" style="height:580px; overflow:hidden;">
+      <div class="first-row" style="height:48px;
+   display:flex; justify-content: space-between;">
+        <div class="input-and-select" style="height:48px; width:647px; display:flex; justify-content: space-between;">
+          <div class="inputField">
+            <input type="text" class="input" placeholder="Unesite vozilo, registracijsku oznaku, kod">
+            <div class="search-icon-div">
+              <img src="../../assets/img/search.svg" class="search-icon">
+            </div>
+          </div>
+          <div class="modelMenu">
+            <div class="modelMenu-field">
+              <div class="modelMenu-text">Tip vozila</div>
+              <div class="modelMenu-dropdownField">
+                <img src="../../assets/img/dropdown.svg" class="modelMenu-dropdownIcon">
+              </div>
+            </div>
+          </div>
         </div>
+        <button (click)="dodatniFilteri()" class="dodatniFilteri">
+          <div class="dodatniFilteri-text">Dodatni filteri</div>
+          <div class="downArrow">
+            <img src="../../assets/img/downArrow.svg" class="downArrow-icon">
+          </div>
+        </button>
       </div>
-      <div class="take-action-text">Odaberi akciju</div>
-      <div class="select">
-        <div class="select-text">Akcija</div>
-        <div class="dropdown-icon">
-          <img src="../../assets/img/dropdown.svg" class="dd-icon">
-        </div>
-      </div>
+
+      <table class="table" id="table">
+        <thead>
+        <tr>
+          <th class="header1"></th>
+          <th class="headers-in-row" *ngFor="let h of headers;">
+            <div class="header-title">{{h.id}}</div>
+          </th>
+        </tr>
+        </thead>
+        <tbody class="body" id="body">
+        <tr *ngFor="let c of carNew" class="data-row">
+          <td class="check-td">
+            <div class="check-td-div">
+              <input type="checkbox" class="checkbox-body">
+            </div>
+          </td>
+          <td class="name">
+            <div class="td-div">{{c.name}}</div>
+          </td>
+          <td class="id">
+            <div class="td-div">{{c.id}}</div>
+          </td>
+          <td class="model">
+            <div class="td-div">{{c.model}}</div>
+          </td>
+          <td class="regDate">
+            <div class="td-div">{{c.regDate}}</div>
+          </td>
+          <td class="servDate">
+            <div class="td-div">{{c.servDate}}</div>
+          </td>
+          <td class="cost">
+            <div class="td-div">
+              {{c.cost}}
+              <div class="delete" (click)="deleteRow()">
+                <img src="../../assets/img/delete.svg" class="delete-icon">
+              </div>
+              <div class="edit" (click)="editRow()">
+                <img src="../../assets/img/edit.svg" class="edit-icon">
+              </div>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr class="foot-row">
+          <div class="action">
+            <div class="action-check">
+              <div class="action-check-field">
+                <input type="checkbox" class="action-checkbox">
+              </div>
+            </div>
+            <div class="take-action-text">Odaberi akciju</div>
+            <div class="select">
+              <div class="select-text">Akcija</div>
+              <div class="dropdown-icon">
+                <img src="../../assets/img/dropdown.svg" class="dd-icon">
+              </div>
+            </div>
+          </div>
+          <button class="addVehicle-button" (click)="addVehicle()">
+            <div class="action-button-icon">
+              <img src="../../assets/img/plus.svg" class="plus-icon">
+            </div>
+            <div class="action-button-text">Dodaj vozilo</div>
+          </button>
+        </tr>
+        </tfoot>
+      </table>
     </div>
-    <button class="addVehicle-button" (click)="addVehicle()">
-      <div class="action-button-icon">
-        <img src="../../assets/img/plus.svg" class="plus-icon">
-      </div>
-      <div class="action-button-text">Dodaj vozilo</div>
-    </button>
-  </tr>
-  </tfoot>
-</table>
+  </div>
+</main>
 
-
-<div class="licitacija">
-  <a href="#" class="fill-div">
-    <div class="licitacija-div">
-      <div class="licitacija-text">Licitacija</div>
+<!--<div class="confirmation-dialog">
+  <div class="cd-content">
+    <div class="warning">
+      <img src="../../assets/img/warning.svg" class="warning-sign">
     </div>
-    <img src="../../assets/img/licitation-rectangle.svg" class="lRec">
-  </a>
-</div>
-
-
-<div class="vozila">
-  <a href="#" class="fill-div">
-    <div class="vozila-div">
-      <div class="vozila-text">Vozila</div>
+    <div class="warning-title">
+      Budite pažljivi
     </div>
-    <img src="../../assets/img/vehicle-rectangle.svg" class="vRec">
-  </a>
-</div>
-
-<div class="car">
-  <img src="../../assets/img/car.svg" class="car-icon">
-</div>
-<div class="line"></div>
-<div class="pie-chart">
-  <img src="../../assets/img/piechart.svg" class="pie-chart-icon">
-</div>
-
+    <div class="warning-text">
+      Jeste li sigurni da želite nastaviti? Ovu akciju nije moguće poništiti.
+    </div>
+  </div>
+  <div class="cd-buttons">
+    <button class="no-btn"><div class="no-btn-text">Ne</div></button>
+    <button class="yes-btn"><div class="yes-btn-text">Da</div></button>
+  </div>
+</div>-->
 
