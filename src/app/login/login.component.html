@@ -1,0 +1,68 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+
+
+<div class="bg">
+  <div class="inputBox">
+    <div class="content">
+      <div class="unlock-icon">
+        <img src="../../assets/img/icon-unlock.svg" class="unlockIcon">
+      </div>
+      <div class="title">
+        <h3 class ="title-text">Prijavi se</h3>
+      </div>
+      <div class="paragraph">
+        <p class="par">
+          Da biste pristupili aplikaciji potrebno je da izvršite prijavu.
+          <span class="bold-text">Ukoliko niste registrirani</span>, javite se nadređenom sa zahtjevom da vam
+          se omogući pristup sistemu.
+        </p>
+      </div>
+
+      <div class="email-field">
+        <div class="email-input-icon">
+          <img src="../../assets/img/email-icon.svg" class="emailicon">
+        </div>
+
+        <input
+          class="email"
+          id="email"
+          type="email"
+          name="email"
+          placeholder="e-mail"
+          required
+        />
+
+      </div>
+
+
+      <div class="password-field">
+        <div class="password-input-icon">
+          <img src="../../assets/img/icon-lock.svg" class="passIcon">
+        </div>
+
+        <input
+          class="password"
+          id="password"
+          type="password"
+          name="password"
+          placeholder="šifra"
+          required
+          (keydown.enter)="login()"
+        />
+
+      </div>
+    </div>
+
+
+    <button class="button" (click)="login()">
+      <div class="buttonIcon">
+        <img src="../../assets/img/button-unlock.svg" class="button-icon">
+      </div>
+      <div class="button-text">
+        Prijava
+      </div>
+    </button>
+  </div>
+</div>
+
+
